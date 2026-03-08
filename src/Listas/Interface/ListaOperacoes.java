@@ -1,3 +1,5 @@
+package Listas.Interface;
+
 /**
  * Interface que define operações avançadas para manipulação
  * de estruturas de lista baseadas em String.
@@ -34,7 +36,7 @@ public interface ListaOperacoes {
     /**
      * Adiciona múltiplos elementos à lista.
      *
-     * No caso da lista baseada em vetor, deve respeitar o limite
+     * Listas.Nos.No caso da lista baseada em vetor, deve respeitar o limite
      * de capacidade. Caso não haja espaço suficiente, apenas os
      * elementos possíveis deverão ser adicionados.
      *
@@ -58,7 +60,7 @@ public interface ListaOperacoes {
     /**
      * Insere um elemento em uma posição específica da lista.
      *
-     * No caso de lista baseada em vetor, os elementos à direita devem
+     * Listas.Nos.No caso de lista baseada em vetor, os elementos à direita devem
      * ser deslocados. Na lista dinâmica, deve-se ajustar corretamente
      * os encadeamentos entre os nós.
      *
@@ -71,7 +73,7 @@ public interface ListaOperacoes {
     /**
      * Remove o elemento localizado em uma posição específica da lista.
      *
-     * No vetor, os elementos à direita devem ser deslocados para
+     * Listas.Nos.No vetor, os elementos à direita devem ser deslocados para
      * preencher o espaço. Na lista encadeada, deve-se ajustar os
      * ponteiros entre os nós.
      *
@@ -83,7 +85,7 @@ public interface ListaOperacoes {
     /**
      * Remove todos os elementos da lista, deixando-a vazia.
      *
-     * No caso da lista baseada em vetor, apenas o tamanho lógico
+     * Listas.Nos.No caso da lista baseada em vetor, apenas o tamanho lógico
      * deve ser resetado. Na lista dinâmica, os nós devem ser
      * desconectados para permitir a coleta de lixo.
      */

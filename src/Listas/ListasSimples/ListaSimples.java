@@ -1,4 +1,8 @@
-public class ListaSimples implements ListaOperacoes{
+package Listas.ListasSimples;
+
+import Listas.Interface.ListaOperacoes;
+
+public class ListaSimples implements ListaOperacoes {
     String[] lista;
 
     public ListaSimples(int tamanho) {
@@ -57,7 +61,13 @@ public class ListaSimples implements ListaOperacoes{
             }
         }
     }
+    //busca um ou mais elementos:
+    public int [] buscarElementos(String elemento){
+        int qtdEncontrada = 0;
+        int [] elementosEncontrados =  new int[5];
+    }
 
+    //busca apenas um elemento
     public int buscarElemento(String elemento){
         int i;
         if (!estaVazio()) {
@@ -92,7 +102,8 @@ public class ListaSimples implements ListaOperacoes{
 
     @Override
     public int removerTodas(String elemento) {
-        return 0;
+        int qtdRemocoes = 0;
+
     }
 
     @Override
