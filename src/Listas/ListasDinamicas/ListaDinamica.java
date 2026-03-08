@@ -1,4 +1,9 @@
-public class ListaDinamica implements ListaOperacoes{
+package Listas.ListasDinamicas;
+
+import Listas.Interface.ListaOperacoes;
+import Listas.Nos.No;
+
+public class ListaDinamica implements ListaOperacoes {
     No inicio;
 
     public ListaDinamica() {

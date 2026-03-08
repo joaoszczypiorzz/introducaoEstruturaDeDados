@@ -1,3 +1,5 @@
+package Listas.Nos;
+
 public class NoInteiro {
     Integer conteudo;
     NoInteiro prox;

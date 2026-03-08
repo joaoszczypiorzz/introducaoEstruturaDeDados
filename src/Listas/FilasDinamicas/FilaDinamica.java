@@ -1,3 +1,6 @@
+package Listas.FilasDinamicas;
+import Listas.Nos.NoInteiro;
+
 public class FilaDinamica {
     NoInteiro inicio;
 

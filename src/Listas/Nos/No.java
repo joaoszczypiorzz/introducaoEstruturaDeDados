@@ -1,3 +1,5 @@
+package Listas.Nos;
+
 public class No {
     String conteudo;
     No prox;
