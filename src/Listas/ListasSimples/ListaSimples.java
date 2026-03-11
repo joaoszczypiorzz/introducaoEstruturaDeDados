@@ -2,6 +2,8 @@ package Listas.ListasSimples;
 
 import Listas.Interface.ListaOperacoes;
 
+import java.util.InputMismatchException;
+
 public class ListaSimples implements ListaOperacoes {
     String[] lista;
 
@@ -61,12 +63,6 @@ public class ListaSimples implements ListaOperacoes {
             }
         }
     }
-    //busca um ou mais elementos:
-    public int [] buscarElementos(String elemento){
-        int qtdEncontrada = 0;
-        int [] elementosEncontrados =  new int[5];
-    }
-
     //busca apenas um elemento
     public int buscarElemento(String elemento){
         int i;
@@ -100,15 +96,47 @@ public class ListaSimples implements ListaOperacoes {
         System.out.println("A lista possui " + cont + " elementos!");
     }
 
+    /**
+     * Remove todas as ocorrencias do elemento inputado pelo usuário, e no final exibe mensagem ao usuário
+     * @param elemento Elemento que deverá ter todas as ocorrências removidas.
+     * @return A quantidade de elementos removidos da Lista
+     */
     @Override
     public int removerTodas(String elemento) {
         int qtdRemocoes = 0;
+        if(!estaVazio()){
+            try{
+                for(int i = 0; i < this.lista.length; i++){
+                    if(this.lista[i].equals(elemento)){
+                        this.lista[i] = null;
+                        qtdRemocoes++;
+                    }
+                }
+            }catch (NullPointerException e){ //Não para o programa com comparações de Valores nulos no lista[i]
+
+            }
+            if(qtdRemocoes == 0){
+                System.out.println("Elemento: " + elemento + " não encontrado na lista");
+            } else {
+                System.out.println("O elemento: " + elemento + " Foi removido da lista " + "\nQuantidade de remoções: " + qtdRemocoes);
+            }
+        }
+        return qtdRemocoes;
 
     }
 
     @Override
     public int contar() {
-        return 0;
+        int contador = 0;
+        if(!estaVazio()){
+            for(int i = 0; i < this.lista.length ; i++){
+                if(this.lista[i]!= null){
+                    contador++;
+                }
+            }
+        }
+        System.out.println("Número de Elementos presentes na lista: " + contador);
+        return contador;
     }
 
     @Override
@@ -118,7 +146,30 @@ public class ListaSimples implements ListaOperacoes {
 
     @Override
     public String obter(int indice) {
-        return "";
+        try{
+            if(indice < 0 || indice >= this.lista.length){
+                throw new ArrayIndexOutOfBoundsException("Indice infomado Inválido!");
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+        String elementoEncontrado = "";
+        if(!estaVazio()){
+            for(int i = 0; i < this.lista.length ; i++){
+                if(this.lista[i] == this.lista[indice]){
+                    if(this.lista[i] == null){
+                        System.out.println("Indice informado está vazio!");
+                        break;
+                    } else {
+                        elementoEncontrado = this.lista[i];
+                        System.out.println("Elemento: " + elementoEncontrado + " Encontrado para o indice: " + indice);
+                        break;
+                    }
+                }
+            }
+        }
+        return elementoEncontrado;
     }
 
     @Override
@@ -133,12 +184,27 @@ public class ListaSimples implements ListaOperacoes {
 
     @Override
     public void limpar() {
-
+        for(int i = 0; i < this.lista.length ; i++){
+            lista[i] = null;
+        }
+        exibirElementos();
     }
 
     @Override
     public int ultimoIndiceDe(String elemento) {
-        return 0;
+        int ultimoIndice = 0;
+        if(!estaVazio()){
+            for(int i =0; i <this.lista.length ; i++){
+                if(this.lista[i].equalsIgnoreCase(elemento)){
+                    ultimoIndice = i;
+                }
+            }
+        }
+        if(ultimoIndice > 0 ){
+            System.out.println("Ultimo indice de Ocorrencia: " + ultimoIndice + " Para o Elemento: " + elemento);
+            return ultimoIndice;
+        }
+        return -1;
     }
 
     @Override
