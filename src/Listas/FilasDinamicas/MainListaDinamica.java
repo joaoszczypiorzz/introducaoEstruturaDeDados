@@ -1,4 +1,7 @@
-package Listas.ListasDinamicas;
+package Listas.FilasDinamicas;
+
+
+import Listas.ListasDinamicas.ListaDinamica;
 
 public class MainListaDinamica {
     public static void main(String[] args) {
