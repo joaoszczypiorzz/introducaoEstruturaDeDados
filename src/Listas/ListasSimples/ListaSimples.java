@@ -84,7 +84,7 @@ public class ListaSimples implements ListaOperacoes {
         }
     }
 
-    public void quantidadeElementos() {
+    public int quantidadeElementos() {
         int cont = 0;
         if(!estaVazio()) {
             for (int i = 0; i < this.lista.length; i++) {
@@ -92,8 +92,9 @@ public class ListaSimples implements ListaOperacoes {
                     cont++;
                 }
             }
+            return cont;
         }
-        System.out.println("A lista possui " + cont + " elementos!");
+        return -1;
     }
 
     /**
@@ -141,7 +142,21 @@ public class ListaSimples implements ListaOperacoes {
 
     @Override
     public int adicionarVarios(String[] elementos) {
-        return 0;
+        int adicionados = 0;
+        int capacidadeTotal = this.lista.length;
+        if(!estaVazio()) {
+            for (int i = 0; i < elementos.length; i++) {
+                if (this.quantidadeElementos() < capacidadeTotal) {
+
+                    this.lista[this.quantidadeElementos()] = elementos[i];
+                    adicionados++;
+
+                } else {
+                    break;
+                }
+            }
+        }
+        return adicionados;
     }
 
     @Override
@@ -174,12 +189,41 @@ public class ListaSimples implements ListaOperacoes {
 
     @Override
     public boolean inserir(int indice, String elemento) {
+        String [] novoVetor = new String [quantidadeElementos() + 1];
+        if(!estaVazio()){
+            int contAux = 0; //contador auxiliar para percorrer a lista original
+            for(int i = 0;i < novoVetor.length;i++){
+                if(this.lista[contAux] == null){
+                    novoVetor[i] = null;
+                }else if(i == indice){
+                    novoVetor[i] = elemento;
+                } else{
+                    novoVetor[i] = this.lista[contAux];
+                    contAux++;
+                }
+            }
+            for(int i = 0;i < novoVetor.length;i++){
+                System.out.println("Lista[" + i + "] = " + novoVetor[i]);
+            }
+            return true;
+        }
         return false;
+
     }
 
     @Override
     public String removerPorIndice(int indice) {
-        return "";
+        String elementoRemovido = this.lista[indice]; //guarda o elemento que vai ser removido
+        if(!estaVazio()){
+            if (indice < 0 || indice >= quantidadeElementos()) {
+                return null;
+            }
+            for (int i = indice; i < quantidadeElementos() - 1; i++) { //deslocando elementos para a direita
+                this.lista[i] = this.lista[i + 1];
+            }
+            this.lista[quantidadeElementos() - 1] = null; //Limpa a posição duplicada
+        }
+        return elementoRemovido;
     }
 
     @Override
@@ -193,15 +237,17 @@ public class ListaSimples implements ListaOperacoes {
     @Override
     public int ultimoIndiceDe(String elemento) {
         int ultimoIndice = 0;
-        if(!estaVazio()){
-            for(int i =0; i <this.lista.length ; i++){
-                if(this.lista[i].equalsIgnoreCase(elemento)){
+        if(!estaVazio() || buscarElemento(elemento)!= -1){
+            for(int i = 0; i < this.lista.length; i++){
+                if(this.lista[i] == null){
+                    continue;
+                }else if(this.lista[i].equals(elemento)){
                     ultimoIndice = i;
                 }
             }
         }
-        if(ultimoIndice > 0 ){
-            System.out.println("Ultimo indice de Ocorrencia: " + ultimoIndice + " Para o Elemento: " + elemento);
+        if(buscarElemento(elemento)!= -1){
+            System.out.println("Ultimo indice: " + ultimoIndice + " para o elemento " + elemento);
             return ultimoIndice;
         }
         return -1;
@@ -209,11 +255,43 @@ public class ListaSimples implements ListaOperacoes {
 
     @Override
     public int contarOcorrencias(String elemento) {
-        return 0;
+        int contador = 0;
+        if(!estaVazio() || buscarElemento(elemento)!=-1){
+            for(int i = 0; i < this.lista.length; i ++){
+                if(this.lista[i] == null){
+                    continue;
+                }else if(this.lista[i].equals(elemento)){
+                    contador++;
+                }
+            }
+        }
+        if(contador != 0){
+            System.out.println("Numero de ocorrencias: " + contador + " do elemento: " + elemento + " na lista");
+            return contador;
+        }
+        System.out.println("Elemento não encontrado na lista!");
+        return -1;
     }
 
     @Override
     public int substituir(String antigo, String novo) {
+        int qtdSubstituicoes = 0;
+        if(!estaVazio()){
+            for(int i = 0 ; i < this.lista.length; i++){
+                if(this.lista[i] == null){
+                    continue;
+                } else if(this.lista[i].equals(antigo)){
+                    this.lista[i] = novo;
+                    qtdSubstituicoes++;
+                }
+            }
+        }
+        if(qtdSubstituicoes != 0){
+            System.out.println("Substituições realizadas: " + qtdSubstituicoes);
+            System.out.println("Array Novo: ");
+            exibirElementos();
+        }
+        System.out.println("Input informado não existente na lista");
         return 0;
     }
 }
