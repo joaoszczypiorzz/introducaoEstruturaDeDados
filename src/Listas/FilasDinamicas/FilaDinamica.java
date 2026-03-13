@@ -1,23 +1,24 @@
 package Listas.FilasDinamicas;
-import Listas.Nos.NoInteiro;
+
+import Listas.Nos.NoString;
 
 public class FilaDinamica {
-    NoInteiro inicio;
+    NoString inicio;
 
     public FilaDinamica() {
-        this.inicio = new NoInteiro(null);
+        this.inicio = new NoString(null);
     }
 
-    public void enfileirar(int numero) {
+    public void enfileirar(String elemento) {
         if(estaVazio()) {
-            System.out.println("Número " + numero + " adicionado a Fila.");
-            this.inicio.setConteudo(numero);
+            System.out.println("Elemento " + elemento + " adicionado a Fila.");
+            this.inicio.setConteudo(elemento);
         } else {
-            NoInteiro novoNo = new NoInteiro(numero);
-            NoInteiro aux = this.inicio;
+            NoString novoNo = new NoString(elemento);
+            NoString aux = this.inicio;
             while(aux != null) {
                 if(aux.getProx() == null) {
-                    System.out.println("Número " + numero + " adicionado a Fila.");
+                    System.out.println("Elemento " + elemento + " adicionado a Fila.");
                     aux.setProx(novoNo);
                     return;
                 }
@@ -28,7 +29,7 @@ public class FilaDinamica {
 
     public void exibir(){
         if(!estaVazio()) {
-            NoInteiro aux = this.inicio;
+            NoString aux = this.inicio;
             while(aux != null) {
                 System.out.println(aux.getConteudo());
                 aux = aux.getProx();
