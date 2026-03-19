@@ -9,5 +9,13 @@ public class MainPilhaSimples {
         pilha.empilhar("feijão");
         pilha.empilhar("carne");
         pilha.exibir();
+        System.out.println("================================");
+        pilha.desempilhar();
+        pilha.desempilhar();
+        pilha.desempilhar();
+        pilha.desempilhar();
+        pilha.desempilhar();
+        pilha.exibir();
+
     }
 }

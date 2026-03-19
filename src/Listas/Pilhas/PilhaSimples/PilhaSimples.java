@@ -31,6 +31,22 @@ public class PilhaSimples {
         }
     }
 
+    public void desempilhar(){
+        if(estaCheio()){
+            System.out.println("Elemento: " + this.pilha[0] + " Desempilhado com sucesso!");
+            this.pilha[0] = null;
+        } else if(!estaVazio()){
+            for(int i = this.pilha.length - 1; i > 0; i--){
+                int contAuxiliar = i - 1;
+                if(this.pilha[contAuxiliar] == null){
+                    System.out.println("Elemento: " + this.pilha[i] + " Desempilhado com sucesso!");
+                    this.pilha[i] = null;
+                    return;
+                }
+            }
+        }
+    }
+
     private boolean estaVazio(){
         for(int i = 0; i < this.pilha.length; i++){
             if(this.pilha[this.pilha.length - 1] == null){
@@ -43,7 +59,6 @@ public class PilhaSimples {
     private boolean estaCheio(){
         for(int i = 0; i < this.pilha.length; i++){
             if(this.pilha[0] != null){ //Se a primeira posição contiver um elemento
-                System.out.println("A Pilha está cheia!");
                 return true;
             }
         }
