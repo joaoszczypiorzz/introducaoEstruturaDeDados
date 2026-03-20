@@ -1,8 +1,8 @@
 package Listas.Nos;
 
 public class NoString {
-    String conteudo;
-    NoString prox;
+    String conteudo; //conteudo
+    NoString prox; //Ponteiro para o proximo conteudo da Lista
 
     public NoString(String conteudo) {
         this.conteudo = conteudo;
