@@ -1,5 +1,4 @@
 package Listas.Pilhas.PilhaDinamica;
-import Listas.Nos.No;
 import Listas.Nos.NoString; //importando package do No
 
 public class PilhaDinamica {
